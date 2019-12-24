@@ -1,6 +1,8 @@
 package system.controller;
 
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,11 +41,19 @@ public class UserController
     public @ResponseBody
     String checkUser(@ModelAttribute("userFromServer") User user)
     {
-        String result = "invalid";
-        if ("admin".equals(user.getName()) && "admin".equals(user.getPassword()))
-        {
-            result = "valid";
-        }
-        return result;
+        SessionFactory db = userService.getDb(User.class);
+        Session session = db.openSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        User user1 = session.get(User.class, 1);
+        return user1.toString();
+
+//        String result = "invalid";
+//        if ("admin".equals(user.getName()) && "admin".equals(user.getPassword()))
+//        {
+//            result = "valid";
+//        }
+//        return result;
     }
 }
