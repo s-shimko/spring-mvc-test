@@ -12,7 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>5.1.9.RELEASE</spring.version>
-        <hibernate.version>5.4.9.final</hibernate.version>
+        <hibernate.version>5.4.9.Final</hibernate.version>
         <jackson.version>2.10.1</jackson.version>
         <h2.version>1.4.200</h2.version>
     </properties>
@@ -107,7 +107,7 @@
                         <port>8091</port>
                     </httpConnector>
                     <webApp>
-                        <contextPath>/user-system</contextPath>
+                        <contextPath>/</contextPath>
                     </webApp>
                     <stopPort>9966</stopPort>
                     <stopKey>jetty-stop</stopKey>
