@@ -1,6 +1,5 @@
 package system.dao;
 
-import java.util.Arrays;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.SessionFactory;
