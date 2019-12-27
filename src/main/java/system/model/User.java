@@ -21,12 +21,22 @@ public class User
     @Column
     private String password;
 
+    @Column
+    private String role;
+
     public User(){}
 
     public User(final String name, final String password)
     {
         this.name = name;
         this.password = password;
+    }
+
+    public User(final String name, final String password, final String role)
+    {
+        this.name = name;
+        this.password = password;
+        this.role = role;
     }
 
     public Integer getId()
@@ -59,5 +69,24 @@ public class User
         this.password = password;
     }
 
+    public String getRole()
+    {
+        return role;
+    }
 
+    public void setRole(final String role)
+    {
+        this.role = role;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "User{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", password='" + password + '\'' +
+            ", role='" + role + '\'' +
+            '}';
+    }
 }

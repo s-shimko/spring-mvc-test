@@ -6,7 +6,7 @@
 
     <mvc:annotation-driven/>
     <context:component-scan base-package="system"/>
-    <mvc:view-controller path="/" view-name="users-page"/>
+    <mvc:view-controller path="/" view-name="login"/>
 
     <bean id="resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
