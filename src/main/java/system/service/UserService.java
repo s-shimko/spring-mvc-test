@@ -21,4 +21,9 @@ public class UserService
         return userDao.getDb(clazz);
     }
 
+    public User getUser(User user)
+    {
+        return userDao.getUser(user);
+    }
+
 }

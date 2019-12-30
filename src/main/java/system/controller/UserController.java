@@ -3,7 +3,6 @@ package system.controller;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import system.model.User;
+import system.model.vo.ShopSession;
+import system.service.AuthorizeService;
+import system.service.ProductService;
 import system.service.UserService;
 
 @Controller
@@ -20,6 +22,14 @@ public class UserController
 {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private AuthorizeService authorizeService;
+
+    private ShopSession shopSession;
 
     @RequestMapping({"/", "/login"})
     public ModelAndView showLoginPage()
@@ -33,8 +43,30 @@ public class UserController
     public @ResponseBody
     ModelAndView loginUser(@ModelAttribute("loginUser") User user)
     {
-        return new ModelAndView("status-page", "status_message", "User login: " + userIsInDb(user));
+        ModelAndView mav = new ModelAndView();
+        User userToLogin = userService.getUser(user);
+        if (userToLogin == null)
+        {
+            mav.setViewName("status-page");
+            mav.addObject("statusMessage", "User login: null");
+        } else {
+            mav.setViewName("redirect:/products");
+            mav.addObject("loggedUser", userToLogin.getName());
+            shopSession = authorizeService.authorizeUser(user);
+            shopSession.setProducts(productService.getAllProducts());
+        }
+        return mav;
     }
+
+    @RequestMapping("/products")
+    public ModelAndView showProducts()
+    {
+        ModelAndView mav = new ModelAndView("products-page");
+        mav.addObject("products", shopSession.getProducts());
+        mav.addObject("loggedUser", shopSession.getUser().getName());
+        return mav;
+    }
+
 
     @RequestMapping("/registration")
     public ModelAndView showRegistrationPage()
@@ -66,16 +98,4 @@ public class UserController
         return userService.getAllUsers();
     }
 
-    private User userIsInDb(User user)
-    {
-        String hql =
-            "FROM User WHERE name='" + user.getName() + "' and password='" + user.getPassword() +
-                "'";
-        SessionFactory db = userService.getDb(User.class);
-        Session session = db.openSession();
-        session.beginTransaction();
-        Query query = session.createQuery(hql);
-        List users = query.list();
-        return users.size() > 0 ? (User) users.get(0) : null;
-    }
 }

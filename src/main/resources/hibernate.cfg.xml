@@ -11,6 +11,7 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.connection.autocommit">true</property>
         <mapping class="system.model.User"/>
+        <mapping class="system.model.Product"/>
 
         <!--        &lt;!&ndash; MySQL Database connection settings &ndash;&gt;-->
         <!--        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->

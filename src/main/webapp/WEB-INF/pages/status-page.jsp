@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <html>
 <head>
@@ -8,7 +7,7 @@
 <h1>Status page</h1>
 <table>
     <tr>
-        <td style="color: green;">${status_message}</td>
+        <td style="color: red;">${statusMessage}</td>
     </tr>
 </table>
 <h3><a href="/login">Login page</a></h3>
