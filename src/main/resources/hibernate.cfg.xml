@@ -12,30 +12,5 @@
         <property name="hibernate.connection.autocommit">true</property>
         <mapping class="system.model.User"/>
         <mapping class="system.model.Product"/>
-
-        <!--        &lt;!&ndash; MySQL Database connection settings &ndash;&gt;-->
-        <!--        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
-        <!--        <property name="connection.url">jdbc:mysql://localhost:3306/testdb</property>-->
-        <!--        <property name="connection.username">admin</property>-->
-        <!--        <property name="connection.password">admin</property>-->
-
-        <!--        &lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
-        <!--        <property name="connection.pool_size">1</property>-->
-
-        <!--        &lt;!&ndash; SQL dialect &ndash;&gt;-->
-        <!--        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
-
-        <!--        &lt;!&ndash; Enable Hibernate's automatic session context management &ndash;&gt;-->
-        <!--        &lt;!&ndash;        <property name="current_session_context_class">thread</property>&ndash;&gt;-->
-
-        <!--        &lt;!&ndash; Echo all executed SQL to stdout &ndash;&gt;-->
-        <!--        <property name="show_sql">true</property>-->
-
-        <!--        <property name="hibernate.connection.autocommit">true</property>-->
-
-        <!--        &lt;!&ndash; Drop and re-create the database schema on startup &ndash;&gt;-->
-        <!--        <property name="hbm2ddl.auto">validate</property>-->
-
-        <!--        <mapping class="system.model.User"/>-->
     </session-factory>
 </hibernate-configuration>

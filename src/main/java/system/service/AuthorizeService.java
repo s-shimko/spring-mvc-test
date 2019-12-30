@@ -11,7 +11,6 @@ import system.model.vo.ShopSession;
 @Service
 public class AuthorizeService
 {
-
     @Autowired
     private UserDao userDao;
 
