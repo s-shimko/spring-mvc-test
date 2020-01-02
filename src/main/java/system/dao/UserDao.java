@@ -1,12 +1,12 @@
 package system.dao;
 
-import java.util.List;
-import javax.persistence.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import system.model.Product;
 import system.model.User;
+
+import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 public class UserDao extends SessionDao
