@@ -11,24 +11,9 @@ import system.model.User;
 @Repository
 public class UserDao extends SessionDao
 {
-    private SessionFactory session;
-
-    public SessionFactory getDb(Class clazz){
-        session = buildSessionFactory(clazz);
-        return session;
-    }
-
-    public SessionFactory getDb(){
-        session = buildSessionFactory();
-        return session;
-    }
-
-    private SessionFactory getSession() {
-        return session;
-    }
 
     public List<User> getAllUsers(){
-        Query query = getSession().createEntityManager().createQuery("from User");
+        Query query = SessionDao.getInstance().createEntityManager().createQuery("from User");
         return query.getResultList();
     }
 
@@ -37,12 +22,28 @@ public class UserDao extends SessionDao
         String hql =
             "FROM User WHERE name='" + user.getName() + "' and password='" + user.getPassword() +
                 "'";
-        SessionFactory db = getDb();
-        Session session = db.openSession();
+        Session session = SessionDao.getInstance().openSession();
         session.beginTransaction();
         org.hibernate.query.Query query = session.createQuery(hql);
         List users = query.list();
         return users.size() > 0 ? (User) users.get(0) : null;
+    }
+
+    public User getLastUser(){
+        Session session = SessionDao.getInstance().openSession();
+        User lastUser = (User) session.createQuery("from User ORDER BY id DESC")
+                .setMaxResults(1)
+                .uniqueResult();
+        session.close();
+        return lastUser;
+    }
+
+    public void createUser(User user){
+        Session session = SessionDao.getInstance().openSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
     }
 
     public List<Product> getUserProducts(User user){

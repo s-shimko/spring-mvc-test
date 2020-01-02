@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import system.dao.SessionDao;
 import system.model.User;
 import system.model.vo.ShopSession;
 import system.service.AuthorizeService;
@@ -78,15 +79,8 @@ public class UserController
     public @ResponseBody
     ModelAndView registerUser(@ModelAttribute("registerUser") User user)
     {
-        SessionFactory db = userService.getDb(User.class);
-        Session session = db.openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
-        User addedUser =
-            (User) session.createQuery("from User ORDER BY id DESC").setMaxResults(1)
-                .uniqueResult();
-        session.close();
+        userService.createUser(user);
+        User addedUser = userService.getLastUser();
         return new ModelAndView("status-page", "statusMessage",
             "User register: " + addedUser.toString());
     }

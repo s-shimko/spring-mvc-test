@@ -5,22 +5,16 @@ import org.hibernate.cfg.Configuration;
 
 public class SessionDao
 {
-//    private SessionDao instance;
-//
-//    public SessionDao getInstance() {
-//        if(instance == null) {
-//            instance = buildSessionFactory()
-//        }
-//    }
+    private static SessionFactory instance;
 
-    public static SessionFactory buildSessionFactory(Class clazz){
-        return new Configuration()
-            .configure()
-            .addAnnotatedClass(clazz)
-            .buildSessionFactory();
+    public static SessionFactory getInstance() {
+        if(instance == null) {
+            instance = buildSessionFactory();
+        }
+        return instance;
     }
 
-    public static SessionFactory buildSessionFactory(){
+    private static SessionFactory buildSessionFactory(){
         return new Configuration()
             .configure()
             .buildSessionFactory();

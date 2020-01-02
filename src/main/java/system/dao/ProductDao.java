@@ -10,7 +10,7 @@ import system.model.Product;
 public class ProductDao extends SessionDao
 {
     public List<Product> getAllProducts(){
-        Query query = buildSessionFactory(Product.class).createEntityManager().createQuery("from Product");
+        Query query = SessionDao.getInstance().createEntityManager().createQuery("from Product");
         return query.getResultList();
     }
 }
