@@ -18,6 +18,11 @@ public class UserDao extends SessionDao
         return session;
     }
 
+    public SessionFactory getDb(){
+        session = buildSessionFactory();
+        return session;
+    }
+
     private SessionFactory getSession() {
         return session;
     }
@@ -32,7 +37,7 @@ public class UserDao extends SessionDao
         String hql =
             "FROM User WHERE name='" + user.getName() + "' and password='" + user.getPassword() +
                 "'";
-        SessionFactory db = getDb(User.class);
+        SessionFactory db = getDb();
         Session session = db.openSession();
         session.beginTransaction();
         org.hibernate.query.Query query = session.createQuery(hql);

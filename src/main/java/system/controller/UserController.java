@@ -87,7 +87,7 @@ public class UserController
             (User) session.createQuery("from User ORDER BY id DESC").setMaxResults(1)
                 .uniqueResult();
         session.close();
-        return new ModelAndView("status-page", "status_message",
+        return new ModelAndView("status-page", "statusMessage",
             "User register: " + addedUser.toString());
     }
 
