@@ -5,7 +5,7 @@
     <title>Filtered Users</title>
 </head>
 <body>
-<h2>List of Filtered users</h2>
+<h2>List of Products</h2>
 <table>
     <thead>
     <th>Name</th>

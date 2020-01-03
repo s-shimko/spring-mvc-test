@@ -1,4 +1,4 @@
-package example.beans;
+package system.example.beans;
 
 public class User
 {

@@ -1,7 +1,7 @@
-package example.services;
+package system.example.services;
 
 import java.util.List;
-import example.beans.User;
+import system.example.beans.User;
 
 public interface UserService
 {

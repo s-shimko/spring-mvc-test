@@ -1,7 +1,6 @@
-package example.controllers;
+package system.example.controllers;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import example.services.UserService;
+import system.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
