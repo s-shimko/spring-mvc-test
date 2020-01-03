@@ -10,5 +10,7 @@ Date: ${time?date}
 Time: ${time?time}
 <br>
 Message: ${message}
+<br>
+<a href="userList">Show users</a>
 </body>
 </html>
