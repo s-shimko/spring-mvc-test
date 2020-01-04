@@ -14,6 +14,6 @@ public class ProductDao
     ProductRepository productRepository;
 
     public List<Product> getAllProducts(){
-        return (List<Product>) productRepository.findAllByOrderByIdAsc();
+        return productRepository.findAllByOrderByIdAsc();
     }
 }
