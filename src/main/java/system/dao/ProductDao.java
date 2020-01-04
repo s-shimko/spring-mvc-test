@@ -2,15 +2,18 @@ package system.dao;
 
 
 import java.util.List;
-import javax.persistence.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import system.model.Product;
+import system.repos.ProductRepository;
 
 @Repository
-public class ProductDao extends SessionDao
+public class ProductDao
 {
+    @Autowired
+    ProductRepository productRepository;
+
     public List<Product> getAllProducts(){
-        Query query = SessionDao.getInstance().createEntityManager().createQuery("from Product");
-        return query.getResultList();
+        return (List<Product>) productRepository.findAllByOrderByIdAsc();
     }
 }

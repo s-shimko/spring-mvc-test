@@ -26,9 +26,6 @@ public class UserController
     @Autowired
     private AuthorizeService authorizeService;
 
-    @Autowired
-    private UserRepository userRepository;
-
     private ShopSession shopSession;
 
     @RequestMapping({"/", "/login"})
@@ -84,18 +81,11 @@ public class UserController
             "User register: " + addedUser.toString());
     }
 
-//    @RequestMapping(value = "/list", method = RequestMethod.GET)
-//    public @ResponseBody
-//    List<User> getAllUsers()
-//    {
-//        return userService.getAllUsers();
-//    }
-
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody
     Iterable<User> getAllUsers()
     {
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
 
 }

@@ -17,7 +17,7 @@
         <tr>
             <td><label path="role">Role:</label></td>
             <td>
-                <select path="role">
+                <select path="role" name="role">
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                     <option selected="guest" value="guest">Guest</option>
