@@ -1,5 +1,6 @@
 package system.dao;
 
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -47,7 +48,9 @@ public class UserDao extends SessionDao
     }
 
     public List<Product> getUserProducts(User user){
-        return null;
+        List<Product> userProducts = new LinkedList<>();
+        userProducts.add(new Product("Car"));
+        return userProducts;
     }
 
 

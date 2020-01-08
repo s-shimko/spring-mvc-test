@@ -1,18 +1,16 @@
 package system.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Data;
+import javax.persistence.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table
+@Data
 public class User
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
 
     @Column
@@ -37,56 +35,5 @@ public class User
         this.name = name;
         this.password = password;
         this.role = role;
-    }
-
-    public Integer getId()
-    {
-        return id;
-    }
-
-    public void setId(final Integer id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(final String name)
-    {
-        this.name = name;
-    }
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(final String password)
-    {
-        this.password = password;
-    }
-
-    public String getRole()
-    {
-        return role;
-    }
-
-    public void setRole(final String role)
-    {
-        this.role = role;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "User{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", password='" + password + '\'' +
-            ", role='" + role + '\'' +
-            '}';
     }
 }

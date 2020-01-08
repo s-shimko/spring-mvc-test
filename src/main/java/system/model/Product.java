@@ -1,18 +1,16 @@
 package system.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Data;
+import javax.persistence.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table
+@Data
 public class Product
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @Column
@@ -21,43 +19,7 @@ public class Product
     @Column
     private Double price;
 
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(final Long id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(final String name)
-    {
+    public Product(String name) {
         this.name = name;
-    }
-
-    public Double getPrice()
-    {
-        return price;
-    }
-
-    public void setPrice(final Double price)
-    {
-        this.price = price;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Product{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", price=" + price +
-            '}';
     }
 }
