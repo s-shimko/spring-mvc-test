@@ -22,5 +22,6 @@
         </c:forEach>
     </table>
 </div>
+<td><a href="/login">Back to Login page</a></td>
 </body>
 </html>

@@ -6,4 +6,4 @@ target
 .settings
 .idea
 *.iml
-db.h2db
+build

@@ -2,6 +2,7 @@ package system.model;
 
 import lombok.Data;
 import javax.persistence.*;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -19,7 +20,12 @@ public class Product
     @Column
     private Double price;
 
-    public Product(String name) {
+    public Product()
+    {
+    }
+
+    public Product(String name)
+    {
         this.name = name;
     }
 }
