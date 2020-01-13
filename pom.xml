@@ -19,6 +19,7 @@
         <lombok.version>1.18.10</lombok.version>
         <mockito.version>1.10.19</mockito.version>
         <slf4j.version>2.0.0-alpha1</slf4j.version>
+        <jetty.version>9.4.24.v20191120</jetty.version>
     </properties>
 
     <dependencies>
@@ -134,13 +135,26 @@
             <scope>test</scope>
         </dependency>
 
-<!--        Rest tests-->
+        <!--        Rest tests-->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>4.1.2</version>
         </dependency>
+
+        <!--    Jetty-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
@@ -167,7 +181,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.24.v20191120</version>
+                <version>${jetty.version}</version>
                 <configuration>
                     <supportedPackagings>war</supportedPackagings>
                     <httpConnector>
