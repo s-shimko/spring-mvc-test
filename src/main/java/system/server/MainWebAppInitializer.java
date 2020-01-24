@@ -1,29 +1,35 @@
 package system.server;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRegistration;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
-public class MainWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
+public class MainWebAppInitializer extends AbstractDispatcherServletInitializer
 {
-    // Этот метод должен содержать конфигурации которые инициализируют Beans
-    // для инициализации бинов у нас использовалась аннотация @Bean
-    @Override
-    protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{
-            ServerConfig.class
-        };
-    }
 
-    // Тут добавляем конфигурацию, в которой инициализируем ViewResolver
     @Override
-    protected Class<?>[] getServletConfigClasses() {
-
-        return new Class<?>[]{
-            ServerConfig.class
-        };
+    protected WebApplicationContext createRootApplicationContext()
+    {
+        return null;
     }
 
     @Override
-    protected String[] getServletMappings() {
+    protected WebApplicationContext createServletApplicationContext()
+    {
+        XmlWebApplicationContext cxt = new XmlWebApplicationContext();
+        cxt.setConfigLocation("/WEB-INF/spring/spring-config.xml");
+        return cxt;
+    }
+
+    @Override
+    protected String[] getServletMappings()
+    {
         return new String[]{"/"};
     }
 }
