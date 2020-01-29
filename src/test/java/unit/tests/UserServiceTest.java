@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class UserServiceTest {
 
-
     @Test
     public void createUserTest() {
         log.info("Test started");
