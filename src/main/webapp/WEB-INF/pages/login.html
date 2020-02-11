@@ -1,20 +1,18 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags" %><%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login page</title>
 </head>
 <body>
 <h1>Login page</h1>
-<spring:form modelAttribute="loginUser" method="post" action="/loginProcess">
+<form modelAttribute="loginUser" method="post" th:action="@{/loginProcess}">
     <table>
         <tr>
-            <td><spring:label path="name">Login:</spring:label></td>
-            <td><spring:input path="name" name="name"/></td>
+            <td><label path="name">Login:</label></td>
+            <td><input path="name" name="name" th:required="required" th:autofocus="autofocus"/></td>
         </tr>
         <tr>
-            <td><spring:label path="password">Password:</spring:label></td>
-            <td><spring:input path="password" name="password"/></td>
+            <td><label path="password">Password:</label></td>
+            <td><input path="password" name="password" th:required="required"/></td>
         <tr>
             <td>
                 <button type="submit" value="login">Login</button>
@@ -22,6 +20,6 @@
             <td><a href="/registration"> registration</a></td>
         </tr>
     </table>
-</spring:form>
+</form>
 </body>
 </html>
