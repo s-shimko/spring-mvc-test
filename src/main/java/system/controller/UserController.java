@@ -29,7 +29,7 @@ public class UserController
 
     private ShopSession shopSession;
 
-    @RequestMapping({"/", "/login"})
+    @RequestMapping({"/", "login"})
     public ModelAndView showLoginPage()
     {
         ModelAndView mav = new ModelAndView("login");

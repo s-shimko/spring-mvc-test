@@ -1,28 +1,28 @@
-<html xmlns:spring="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <title>Hello page</title>
 </head>
 <body>
 <h1>Registration page</h1>
-<spring:form modelAttribute="registerUser" method="post" action="/registrationProcess">
+<form modelAttribute="registerUser" method="post" th:action="@{/registrationProcess}">
     <table>
         <tr>
-            <td><spring:label path="name">Login:</spring:label></td>
-            <td><spring:input path="name" name="name"/></td>
+            <td><label path="name">Login:</label></td>
+            <td><input path="name" name="name" th:required="required" th:autofocus="autofocus"/></td>
         </tr>
         <tr>
-            <td><spring:label path="password">Password:</spring:label></td>
-            <td><spring:input path="password" name="password"/></td>
+            <td><label path="password">Password:</label></td>
+            <td><input path="password" name="password" th:required="required" th:autofocus="autofocus"/></td>
         <tr>
         <tr>
-            <td><spring:label path="role">Role:</spring:label></td>
+            <td><label path="role">Role:</label></td>
             <td>
-                <spring:select path="role">
-                    <spring:option value="admin">Admin</spring:option>
-                    <spring:option value="user">User</spring:option>
-                    <spring:option selected="guest" value="guest">Guest</spring:option>
-                </spring:select>
+                <select path="role" name="role">
+                    <option th:value="admin" th:text="Admin"></option>
+                    <option th:value="user" th:text="User"></option>
+                    <option selected="guest" th:value="guest" th:text="Guest"></option>
+                </select>
             </td>
         <tr>
             <td>
@@ -30,7 +30,7 @@
             </td>
         </tr>
     </table>
-</spring:form>
+</form>
 <td><a href="/login">Back to Login page</a></td>
 </body>
 </html>
