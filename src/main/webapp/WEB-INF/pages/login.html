@@ -1,6 +1,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login page</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/login.css}"/>
 </head>
 <body>
 <h1>Login page</h1>
@@ -8,7 +10,8 @@
     <table>
         <tr>
             <td><label path="name">Login:</label></td>
-            <td><input path="name" name="name" th:required="required" th:autofocus="autofocus"/></td>
+            <td><input path="name" name="name" th:required="required" th:autofocus="autofocus"/>
+            </td>
         </tr>
         <tr>
             <td><label path="password">Password:</label></td>
