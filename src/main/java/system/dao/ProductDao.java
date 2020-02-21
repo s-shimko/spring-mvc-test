@@ -13,4 +13,10 @@ public class ProductDao extends SessionDao
         Query query = SessionDao.getInstance().createEntityManager().createQuery("from Product");
         return query.getResultList();
     }
+
+    public Product getProductById(String id) {
+        Query query = SessionDao.getInstance().createEntityManager().createQuery("from Product where id = :id");
+        query.setParameter("id", Long.parseLong(id));
+        return (Product) query.getSingleResult();
+    }
 }

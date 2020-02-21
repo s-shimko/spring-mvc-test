@@ -16,7 +16,7 @@ public class AuthorizeService
 
     public ShopSession authorizeUser(User user) {
         List<Product> products = userDao.getUserProducts(user);
-        ShopSession shopSession = new ShopSession(user);
+        ShopSession shopSession = ShopSessionService.createShopSession(user);
         shopSession.setUser(user);
         shopSession.setProducts(products);
         return shopSession;

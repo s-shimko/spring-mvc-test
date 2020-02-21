@@ -1,5 +1,6 @@
 package system.model;
 
+import java.util.List;
 import lombok.Data;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;

@@ -12,6 +12,7 @@ import system.model.User;
 import system.model.vo.ShopSession;
 import system.service.AuthorizeService;
 import system.service.ProductService;
+import system.service.ShopSessionService;
 import system.service.UserService;
 
 @Controller
@@ -26,6 +27,9 @@ public class UserController
 
     @Autowired
     private AuthorizeService authorizeService;
+
+    @Autowired
+    private ShopSessionService shopSessionService;
 
     private ShopSession shopSession;
 
@@ -48,23 +52,13 @@ public class UserController
             mav.setViewName("status-page");
             mav.addObject("statusMessage", "User login: null");
         } else {
-            mav.setViewName("redirect:/products");
+            mav.setViewName("redirect:/products/list");
             mav.addObject("loggedUser", userToLogin.getName());
             shopSession = authorizeService.authorizeUser(user);
             shopSession.setProducts(productService.getAllProducts());
         }
         return mav;
     }
-
-    @RequestMapping("/products")
-    public ModelAndView showProducts()
-    {
-        ModelAndView mav = new ModelAndView("products-page");
-        mav.addObject("products", shopSession.getProducts());
-        mav.addObject("loggedUser", shopSession.getUser().getName());
-        return mav;
-    }
-
 
     @RequestMapping("/registration")
     public ModelAndView showRegistrationPage()
@@ -88,5 +82,4 @@ public class UserController
     {
         return userService.getAllUsers();
     }
-
 }

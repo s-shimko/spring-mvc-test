@@ -24,11 +24,21 @@
             <td><img th:src="@{/assets/images/car.png}"/></td>
             <td th:text="${product.price}"/></td>
             <td align="center">
-                <a href="">Buy Now</a>
+                <a th:href="@{/products/buy/{id}(id=${product.id})}">Buy Now</a>
             </td>
         </tr>
     </table>
 </div>
+</br>
+<h3>Purchased products:</h3>
+<div class="purchased-products" align="left">
+<ul th:each="purchasedProduct : ${purchasedProducts}">
+    <li th:text="${purchasedProduct}"></li>
+    <a th:href="@{/products/remove/{id}(id=${purchasedProduct.id})}"> Remove</a>
+</ul>
+
+</div>
+
 <td><a href="/login">Back to Login page</a></td>
 </body>
 </html>

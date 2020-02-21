@@ -16,4 +16,7 @@ public class ProductService
         return productDao.getAllProducts();
     }
 
+    public Product getProduct(String id) {
+        return productDao.getProductById(id);
+    }
 }
