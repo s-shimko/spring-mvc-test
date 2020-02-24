@@ -4,6 +4,12 @@
     <title>Products page</title>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{/assets/css/productsPage.css}"/>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="account" align="left">
@@ -38,9 +44,7 @@
     <li th:text="${purchasedProduct}"></li>
     <a th:href="@{/products/remove/{id}(id=${purchasedProduct.id})}"> Remove</a>
 </ul>
-
 </div>
-
 <td><a href="/login">Back to Login page</a></td>
 </body>
 </html>
