@@ -4,6 +4,7 @@ node{
   }
   stage('Compile-Package'){
     sh 'ls -la'
+    sh 'apt-get update && apt-get install -y maven'
     sh 'mvn package'
   }
 }
