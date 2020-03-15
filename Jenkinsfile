@@ -6,12 +6,9 @@ pipeline {
       }
     }
     stages {
-      stage('SCM Checkout') {
-        git 'https://github.com/s-shimko/spring-mvc-test'
-      }
       stage('Build') {
       steps {
-      sh 'mvn -B -DskipTests clean package'
+      sh 'mvn -B -DskipTests clean package jetty:run'
        }
       }
      }
