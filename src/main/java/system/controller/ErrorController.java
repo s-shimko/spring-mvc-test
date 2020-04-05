@@ -41,7 +41,7 @@ public class ErrorController
             }
         }
         errorPage.addObject("errorMsg", errorMsg);
-        errorPage.addObject("exception", httpRequest.getAttribute("javax.servlet.error.exception"));
+//        errorPage.addObject("exception", httpRequest.getAttribute("javax.servlet.error.exception"));
         return errorPage;
     }
 
